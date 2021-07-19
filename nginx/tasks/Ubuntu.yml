@@ -1,0 +1,23 @@
+---
+  - name: Install Nginx on Ubuntu
+    apt: name=nginx state=latest
+
+  - name: Start Nginx on Ubuntu
+    service:
+        name: nginx
+        state: started
+  - name: Create folder sites-available
+    file:
+      path: /etc/nginx/sites-available
+      state: directory
+      owner: root
+      group: root
+      mode: '0755'
+ 
+  - name: Create folder sites-enabled
+    file:
+      path: /etc/nginx/sites-enabled
+      state: directory
+      owner: root
+      group: root
+      mode: '0755'

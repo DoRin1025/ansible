@@ -1,0 +1,41 @@
+---
+- name: add mysql python support for RedHat family
+  yum: name=MySQL-python state=installed
+
+- name: Install Wget
+  yum:
+    name: wget
+    state: present
+
+- name: Install mysql80-community-release-el7-1.noarch.rpm
+  yum:
+    name: https://repo.mysql.com/mysql80-community-release-el7-1.noarch.rpm
+    state: present
+
+- name: Install mysql-community-server
+  yum:
+    name: mysql-community-server
+    state: present
+
+#- name: create mysql database
+ # mysql_db: name=test state=present  
+
+- name: start php-fpm
+  service: name=mysqld state=started enabled=yes
+
+- name: Find MySQL root password
+  shell: "echo `grep 'temporary.*root@localhost' /var/log/mysqld.log | sed 's/.*root@localhost: //'`"
+  register: mysql_root_pass
+- debug: var=mysql_root_pass.stdout
+- set_fact:
+    mysql_old_password: "{{ mysql_root_pass.stdout }}"
+
+- name: 1. set mysql root pass
+  mysql_user:
+      login_user: root
+      login_password: "{{ mysql_old_password }}"
+      user: root
+      host_all: yes
+      password: "Qwerty1234@!"
+
+

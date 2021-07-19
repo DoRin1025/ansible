@@ -1,0 +1,18 @@
+---
+  - name: Download Remi Repo
+    get_url: url=https://rpms.remirepo.net/enterprise/remi-release-8.rpm dest=/root/
+
+  - name: Install Repo
+    yum: name=/root/remi-release-8.rpm state=present
+   
+  #- name: install php
+   # yum: enablerepo=remi,remi-php74 name=php,php-common,php-opcache,php-mcrypt,php-cli,php-gd,php-curl,php-mysql,php-soap,php-ldap,php-mbstring,php-zip,php-xml state=latest
+
+ # - name: install php-fpm
+  #  yum: enablerepo=remi,remi-php74 name=php-fpm state=latest
+
+  #- name: Change php.ini
+   # ini_file: dest=/etc/php.ini
+    #          section=Date
+     #         option=date.timezone
+      #        value=Etc/UTC
