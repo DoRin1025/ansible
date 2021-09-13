@@ -1,16 +1,6 @@
 ---
-  - name: Installation install software-properties-common
-    apt: name=software-properties-common 
- 
-  - name: "Repo PHP 7.4"
-    apt_repository:
-        repo="ppa:ondrej/php"
- 
-  - name: "Updating the repo" 
-    apt: update_cache=yes
- 
   - name: "Installation PHP 7.4"
-    apt: name=php7.4 state=present 
+    apt: name=php7.4 state=present
 
   - name: install lamp stack
     apt:
@@ -29,6 +19,6 @@
           - php7.4-intl
           - libapache2-mod-php
         state: present
-        update_cache: yes 
+       # update_cache: yes 
 
 

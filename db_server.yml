@@ -1,0 +1,6 @@
+- name: Web Srver
+  hosts: all
+  gather_facts: yes
+  become: yes
+  roles:
+          - mysql8

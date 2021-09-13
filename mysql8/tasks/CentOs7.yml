@@ -27,15 +27,15 @@
   shell: "echo `grep 'temporary.*root@localhost' /var/log/mysqld.log | sed 's/.*root@localhost: //'`"
   register: mysql_root_pass
 - debug: var=mysql_root_pass.stdout
-- set_fact:
-    mysql_old_password: "{{ mysql_root_pass.stdout }}"
 
-- name: 1. set mysql root pass
-  mysql_user:
-      login_user: root
-      login_password: "{{ mysql_old_password }}"
-      user: root
-      host_all: yes
-      password: "Qwerty1234@!"
+#- name: print to stdout
+ # command: echo "hello"
+  #register: hello
+
+#- debug: msg= "{{ hello.stdout  mysql_root_pass.stdout }}"
+
+
+
+
 
 

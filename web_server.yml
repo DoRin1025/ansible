@@ -3,5 +3,9 @@
   gather_facts: yes
   become: yes
   roles:
-          - mysql8
-  
+          - tools
+          #- nginx
+          #- php7
+          #- mysql8
+          #- git
+          #- composer

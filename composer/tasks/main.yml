@@ -1,9 +1,9 @@
 ---
- # Setup/install tasks.
+# Setup/install tasks.
 - include_tasks: CentOs7.yml
-  #when: ansible_distribution == 'CentOS'
+   #when: ansible_distribution == 'CentOS'
   when: ansible_os_family == 'RedHat'
 
-- include_tasks: Ubuntu20.yml
+- include_tasks: Ubuntu.yml
   when: ansible_os_family == 'Debian'
 
